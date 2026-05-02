@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birgit Wurmlinger — Gesundheit aus der Natur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #EDE8DF;
+      --warm:     #E2DBD1;
+      --dark:     #1A1626;
+      --mid:      #46405E;
+      --sage:     #6A886C;
+      --lavender: #8A79AC;
+      --earth:    #A08C6A;
+      --light:    #F7F4F0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    /* prefers-reduced-motion — disable all animations/transitions */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+      .hero-eyebrow, .hero-rule, .hero-title, .hero-scroll { opacity: 1; }
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 400;
+      background: var(--light);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAVIGATION ─────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.8rem 4rem;
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-bottom: 1px solid transparent;
+      transition: padding 0.5s, background 0.5s, backdrop-filter 0.5s, border-color 0.5s;
+    }
+    nav.scrolled {
+      padding: 0.9rem 4rem;
+      background: rgba(247,244,240,0.92);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border-bottom: 1px solid rgba(160,140,106,0.16);
+    }
+    nav.scrolled .nav-logo-name {
+      color: var(--dark);
+      text-shadow: none;
+    }
+    .nav-logo {
+      text-decoration: none;
+      cursor: pointer;
+      position: absolute;
+      left: 4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      height: 32px;
+    }
+    .nav-logo:focus-visible {
+      outline: 2px solid var(--lavender);
+      outline-offset: 6px;
+      border-radius: 2px;
+    }
+    .nav-logo-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.65rem;
+      color: #fff;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+      text-shadow: 0 1px 14px rgba(26,22,38,0.5);
+      line-height: 1;
+    }
+    nav.name-visible .nav-logo-name {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.4rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 0.5rem 0;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      background: none;
+      border: none;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.45);
+      transition: color 0.35s, opacity 0.35s;
+    }
+    .nav-links a:hover {
+      color: #fff;
+    }
+    .nav-links a:focus-visible {
+      outline: 2px solid var(--lavender);
+      outline-offset: 6px;
+      border-radius: 2px;
+    }
+    nav.scrolled .nav-links a {
+      color: var(--mid);
+      text-shadow: none;
+    }
+    nav.scrolled .nav-links a:hover {
+      color: var(--dark);
+    }
+
+    /* ── PARALLAX HELPER ─────────────────────────── */
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    /* ── HERO ────────────────────────────────────── */
+    #hero {
+      height: 100vh;
+      background-image: url('bilder/bild_01_hintergrund_a.jpg');
+      background-size: cover;
+      background-position: 68% center;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 220px;
+      background: linear-gradient(to bottom, rgba(10,6,16,0.62) 0%, transparent 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(12,8,18,0.78) 0%,
+        rgba(12,8,18,0.48) 28%,
+        rgba(12,8,18,0.12) 52%,
+        transparent 70%
+      );
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 13vh;
+      gap: 0;
+    }
+    .hero-eyebrow {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      font-size: 0.6rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(218, 198, 158, 0.9);
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+      text-shadow: 0 1px 10px rgba(6,2,14,0.7), 0 0 28px rgba(6,2,14,0.5);
+    }
+    .hero-rule {
+      width: 44px;
+      height: 1px;
+      background: rgba(255,255,255,0.22);
+      margin-bottom: 1.6rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.42s forwards;
+    }
+    .hero-title {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: clamp(1.65rem, 2.8vw, 2.6rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.92);
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.6s forwards;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 0;
+      animation: fadeUp 1s 1.3s forwards;
+    }
+    .hero-scroll span {
+      display: block;
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+      margin: 0 auto;
+      animation: scrollPulse 2.5s ease-in-out 2s infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.35; }
+      50% { opacity: 0.9; }
+    }
+
+    /* ── QUOTE DIVIDER ───────────────────────────── */
+    .quote-divider {
+      background-color: #18142A;
+      background-image:
+        radial-gradient(ellipse 75% 80% at 12% 50%, rgba(122,140,150,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 70% at 78% 38%, rgba(168,112,128,0.14) 0%, transparent 65%),
+        radial-gradient(ellipse 80% 55% at 50% 85%, rgba(74,66,104,0.22) 0%, transparent 60%);
+      padding: 7rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+    .quote-divider blockquote {
+      position: relative;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      color: #fff;
+      max-width: 820px;
+      margin: 0 auto 1.2rem;
+      line-height: 1.6;
+      text-shadow: 0 1px 16px rgba(30,10,40,0.35);
+    }
+    .quote-divider cite {
+      position: relative;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ── CONTENT SECTIONS ────────────────────────── */
+    section {
+      padding: 7rem 2rem;
+    }
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      font-weight: 500;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 0;
+      background: var(--lavender);
+      transition: width 0.65s cubic-bezier(0.4, 0, 0.2, 1) 0.28s;
+      flex-shrink: 0;
+    }
+    .section-label.visible::before {
+      width: 28px;
+    }
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 2.4rem;
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--mid);
+    }
+    .section-text {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--mid);
+      max-width: 660px;
+    }
+    .section-text + .section-text {
+      margin-top: 1.4rem;
+    }
+
+    /* ── ÜBER MICH ───────────────────────────────── */
+    #ueber-mich {
+      background: var(--light);
+      padding: 0;
+    }
+    .ueber-grid {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      gap: 0;
+      align-items: stretch;
+      min-height: 85vh;
+    }
+    .ueber-img-wrap {
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(0 0, 88% 0, 100% 100%, 0 100%);
+    }
+    .ueber-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .ueber-text {
+      padding: 8rem 5rem 8rem 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .credentials {
+      margin-top: 2.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .credential-item {
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      color: var(--sage);
+      padding-left: 1rem;
+      border-left: 2px solid var(--earth);
+    }
+
+    /* ── PARALLAX BREAK ──────────────────────────── */
+    .parallax-break {
+      height: 62vh;
+      min-height: 400px;
+      background-image: url('bilder/bild_09_bienenapotheke.jpg');
+      background-position: center;
+      position: relative;
+    }
+    .parallax-break::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(20,16,10,0.52);
+    }
+    .parallax-break-text {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .parallax-break-text blockquote {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      color: #fff;
+      max-width: 780px;
+      line-height: 1.4;
+    }
+    .parallax-break-text cite {
+      display: block;
+      margin-top: 1rem;
+      font-family: 'Raleway', sans-serif;
+      font-style: normal;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(196,184,224,0.85);
+    }
+
+    /* ── SALUTOGENESE ────────────────────────────── */
+    #salutogenese { background: var(--light); }
+
+    /* ── TRADITIONELLE MEDIZIN ───────────────────── */
+    #traditionen { background: var(--light); }
+    .tradition-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-top: 4rem;
+    }
+    .tradition-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .tradition-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      filter: grayscale(30%);
+      transition: filter 0.25s;
+      border-radius: 20px;
+    }
+    .tradition-card:hover img { filter: grayscale(0%); }
+    .tradition-card h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--dark);
+    }
+    .tradition-card p {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: var(--mid);
+    }
+    .tradition-years {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--lavender);
+    }
+
+    /* ── PARALLAX BREAK 2 ────────────────────────── */
+    .parallax-break-2 {
+      background-image: url('bilder/bild_07_natur_b.jpg');
+      background-position: center 40%;
+    }
+
+    /* ── KURSE ───────────────────────────────────── */
+    #kurse {
+      background-color: var(--cream);
+      background-image:
+        radial-gradient(ellipse 60% 70% at 95% 10%, rgba(106,136,108,0.1) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 60% at 5% 90%, rgba(138,121,172,0.08) 0%, transparent 60%);
+    }
+    .kurs-grid {
+      margin-top: 4rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.6rem;
+    }
+    .kurs-card {
+      background: rgba(247,244,240,0.96);
+      border: 1px solid rgba(160,140,106,0.18);
+      border-radius: 20px;
+      padding: 2.2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+    }
+    .kurs-card:hover {
+      box-shadow: 0 10px 36px rgba(26,22,38,0.1), 0 0 0 1px rgba(138,121,172,0.3);
+      transform: translateY(-4px);
+      border-color: rgba(138,121,172,0.3);
+    }
+    .kurs-icon {
+      width: 40px;
+      height: 40px;
+      color: var(--sage);
+      flex-shrink: 0;
+    }
+    .kurs-card-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--lavender);
+      font-weight: 500;
+    }
+    .kurs-card-name {
+      font-family: 'Lora', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.35;
+    }
+    .kurs-card-desc {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--mid);
+    }
+    .kurs-card--featured {
+      background: linear-gradient(135deg,
+        rgba(138,121,172,0.08) 0%,
+        rgba(138,121,172,0.14) 50%,
+        rgba(138,121,172,0.08) 100%
+      );
+      border-color: rgba(138,121,172,0.38);
+      border-width: 1.5px;
+      grid-column: span 2;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+    .kurs-card--featured .kurs-icon {
+      color: var(--lavender);
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+    .kurs-card--featured .kurs-card-tag {
+      color: var(--lavender);
+    }
+    .kurs-card--featured-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    @media (max-width: 900px) {
+      .kurs-card--featured { grid-column: span 1; flex-direction: column; }
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 3rem;
+      padding: 1rem 2.4rem;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--lavender);
+      text-decoration: none;
+      border-radius: 100px;
+      transition: background 0.25s, transform 0.2s;
+      cursor: pointer;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .btn:hover {
+      background: #7A6B9A;
+      transform: translateY(-2px);
+    }
+    .btn:focus-visible {
+      outline: 2px solid var(--lavender);
+      outline-offset: 4px;
+    }
+
+    /* ── KONTAKT ─────────────────────────────────── */
+    #kontakt { background: var(--light); }
+    .kontakt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .kontakt-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+      margin-top: 2.4rem;
+    }
+    .kontakt-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .kontakt-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--lavender);
+    }
+    .kontakt-value {
+      font-family: 'Lora', serif;
+      font-size: 1.2rem;
+      color: var(--dark);
+    }
+    .kontakt-value a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.25s;
+      cursor: pointer;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .kontakt-value a:hover { color: var(--sage); }
+    .kontakt-value a:focus-visible {
+      outline: 2px solid var(--sage);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+    .kontakt-verein {
+      margin-top: 3rem;
+      padding: 1.8rem;
+      border-left: 2px solid var(--lavender);
+      background: rgba(138,121,172,0.06);
+      border-radius: 0 16px 16px 0;
+    }
+    .kontakt-verein h4 {
+      font-family: 'Lora', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    .kontakt-verein p {
+      font-size: 0.85rem;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      padding: 2.4rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.08em;
+    }
+    footer a {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      transition: color 0.25s;
+      cursor: pointer;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+    footer a:hover { color: var(--lavender); }
+    footer a:focus-visible {
+      outline: 2px solid var(--lavender);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    /* ── REVEAL ANIMATION ────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── KEYFRAMES ───────────────────────────────── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── HAMBURGER ───────────────────────────────── */
+    .hamburger {
+      display: none;
+      position: absolute;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      min-width: 44px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: #fff;
+      transition: transform 0.25s, opacity 0.25s;
+      transform-origin: center;
+    }
+    .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: rgba(34,29,20,0.97);
+      backdrop-filter: blur(16px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.4rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Lora', serif;
+      font-size: 2rem;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--lavender); }
+
+    /* ── WASSERZEICHEN ───────────────────────────── */
+    .watermark {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(6rem, 14vw, 13rem);
+      color: var(--dark);
+      opacity: 0.032;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      letter-spacing: -0.02em;
+    }
+
+
+    /* ── GRAIN TEXTURE ──────────────────────────── */
+    .grain-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.042;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* ── SCROLL PROGRESS ─────────────────────────── */
+    #progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(to right, var(--lavender), #C4B8E0, var(--lavender));
+      z-index: 200;
+      transition: width 0.06s linear;
+    }
+
+    /* ── TRADITION CARD DEKO-JAHRESZAHL ─────────── */
+    .tradition-card {
+      position: relative;
+      isolation: isolate;
+    }
+    .tradition-card::before {
+      content: attr(data-year);
+      position: absolute;
+      bottom: -2rem;
+      right: -0.4rem;
+      font-family: 'Lora', serif;
+      font-size: clamp(5.5rem, 9vw, 8.5rem);
+      font-weight: 400;
+      color: var(--lavender);
+      opacity: 0.12;
+      pointer-events: none;
+      line-height: 1;
+      z-index: -1;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      nav.scrolled { padding: 0.9rem 2rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .ueber-grid { grid-template-columns: 1fr; }
+      .nav-logo { left: 2rem; }
+      .hero-content { padding: 0 2rem; }
+      .ueber-img-wrap { height: 60vw; min-height: 300px; max-height: 480px; clip-path: none; }
+      .ueber-text { padding: 4rem 2rem; }
+      .kontakt-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .tradition-grid { grid-template-columns: 1fr; }
+      .kurs-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 0.8rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- GRAIN + PROGRESS -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div id="progress" aria-hidden="true"></div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation">
+    <a href="#ueber-mich" onclick="closeMobile()">Über mich</a>
+    <a href="#salutogenese" onclick="closeMobile()">Salutogenese</a>
+    <a href="#traditionen" onclick="closeMobile()">Traditionen</a>
+    <a href="#kurse" onclick="closeMobile()">Kurse</a>
+    <a href="#kontakt" onclick="closeMobile()">Kontakt</a>
+  </div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo" aria-label="Zur Startseite">
+      <span class="nav-logo-name">Birgit Wurmlinger</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#ueber-mich">Über mich</a></li>
+      <li><a href="#salutogenese">Salutogenese</a></li>
+      <li><a href="#traditionen">Traditionen</a></li>
+      <li><a href="#kurse">Kurse</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main>
+  <!-- HERO -->
+  <section id="hero" class="parallax">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Salutogenese · Natur · Heilkunde</span>
+      <div class="hero-rule" aria-hidden="true"></div>
+      <h1 class="hero-title">Was erhält uns gesund?</h1>
+    </div>
+    <div class="hero-scroll" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- QUOTE DIVIDER -->
+  <div class="quote-divider">
+    <blockquote>
+      „Die wirksamste Medizin ist die natürliche Heilkraft,<br/>
+      die im Inneren eines jeden von uns liegt."
+    </blockquote>
+    <cite>— Hippokrates</cite>
+  </div>
+
+
+  <!-- ÜBER MICH -->
+  <section id="ueber-mich">
+    <div class="ueber-grid">
+      <div class="ueber-img-wrap">
+        <img src="bilder/bild_08_portrait.jpg" alt="Birgit Wurmlinger" loading="lazy" />
+      </div>
+      <div class="ueber-text">
+        <span class="section-label reveal">Über mich</span>
+        <h2 class="section-title reveal">Mein Weg zur <em>natürlichen Heilkunde</em></h2>
+        <p class="section-text reveal">
+          In einer Zeit, in der wir weniger eine Gesundheits- als vielmehr eine
+          Krankheitskultur haben, möchte ich Menschen ermutigen, aus dem tiefen
+          Wissen der traditionellen Heilkunde zu schöpfen — und die natürliche
+          Heilkraft zu entdecken, die in jedem von uns schlummert.
+        </p>
+        <div class="credentials reveal">
+          <span class="credential-item">Gesundheits- und Entspannungspädagogin</span>
+          <span class="credential-item">Dipl. TEM-Praktikerin</span>
+          <span class="credential-item">Gruppentherapeutin — Sozialtherapeutisches Rollenspiel</span>
+          <span class="credential-item">Märchen, Symbole und Mythen</span>
+          <span class="credential-item">Salutogenese-Beratung</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SALUTOGENESE -->
+  <section id="salutogenese" style="position:relative; overflow:hidden;">
+    <span class="watermark" aria-hidden="true">Salutogenese</span>
+    <div class="section-inner" style="position:relative; z-index:1;">
+      <span class="section-label reveal">Philosophie</span>
+      <h2 class="section-title reveal">Warum<br/><em>Salutogenese?</em></h2>
+      <p class="section-text reveal">
+        Salutogenese — vom lateinischen <em>salus</em> (Gesundheit) und griechischen
+        <em>genesis</em> (Entstehung) — fragt nicht „Was macht uns krank?",
+        sondern: <strong>Was erhält uns gesund?</strong>
+      </p>
+      <p class="section-text reveal" style="margin-top: 1.4rem;">
+        Dieser Ansatz richtet den Blick auf Ressourcen, Stärken und Schutzfaktoren
+        — und macht sie nutzbar. Im Kontext des 21. Jahrhunderts verbindet er
+        modernes Wissen mit dem erprobten Schatz traditioneller europäischer Medizin.
+      </p>
+    </div>
+  </section>
+
+  <!-- PARALLAX BREAK 1 -->
+  <div class="parallax parallax-break">
+    <div class="parallax-break-text">
+      <blockquote>
+        „Gesundheit ist nicht alles,<br/>aber ohne Gesundheit ist alles nichts."
+        <cite>— Arthur Schopenhauer</cite>
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- TRADITIONEN -->
+
+  <section id="traditionen" style="position:relative; overflow:hidden;">
+    <span class="watermark" aria-hidden="true">Tradition</span>
+    <div class="section-inner" style="position:relative; z-index:1;">
+      <span class="section-label reveal">Inspirationsquellen</span>
+      <h2 class="section-title reveal">Traditionen, die<br/><em>bis heute wirken</em></h2>
+      <div class="tradition-grid">
+        <div class="tradition-card reveal" data-year="1098">
+          <img src="bilder/bild_04_hildegard_von_bingen.jpg" alt="Hildegard von Bingen" loading="lazy" />
+          <span class="tradition-years">1098 – 1179</span>
+          <h3>Hl. Hildegard von Bingen</h3>
+          <p>Benediktinerin, Ärztin und Mystikerin — ihr ganzheitliches Heilwissen
+          aus Kräutern, Ernährung und Spiritualität ist bis heute lebendig und
+          wissenschaftlich anerkannt.</p>
+        </div>
+        <div class="tradition-card reveal" data-year="1821">
+          <img src="bilder/bild_05_sebastian_kneipp.jpg" alt="Sebastian Kneipp" loading="lazy" style="object-position: top;" />
+          <span class="tradition-years">1821 – 1897</span>
+          <h3>Sebastian Kneipp</h3>
+          <p>Pfarrer und Naturheilkundler aus dem Allgäu. Seine fünf Säulen —
+          Wasser, Bewegung, Ernährung, Heilpflanzen und Lebensordnung — sind
+          die Grundlage einer zeitlosen Gesundheitslehre.</p>
+        </div>
+        <div class="tradition-card reveal" data-year="1812">
+          <img src="bilder/bild_06_gebrueder_grimm.png" alt="Gebrüder Grimm" loading="lazy" />
+          <span class="tradition-years">Herausgabe 1812 – 1858</span>
+          <h3>KHM der Brüder Grimm</h3>
+          <p>Märchen sind mehr als Geschichten für Kinder. In Symbolen, Mythen
+          und Archetypen verbirgt sich uraltes Heilwissen — nutzbar im
+          sozialtherapeutischen Rollenspiel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARALLAX BREAK 2 -->
+  <div class="parallax parallax-break parallax-break-2">
+    <div class="parallax-break-text">
+      <blockquote>
+        Aus Freyas Zaubergarten —<br/>
+        Vortrag &amp; Workshop über Heilpflanzen<br/>
+        und ihre mythologischen Wurzeln
+      </blockquote>
+    </div>
+  </div>
+
+
+  <!-- KURSE -->
+  <section id="kurse" style="position:relative; overflow:hidden;">
+    <span class="watermark" aria-hidden="true">Heilkunde</span>
+    <div class="section-inner" style="position:relative; z-index:1;">
+      <span class="section-label reveal">Angebote</span>
+      <h2 class="section-title reveal">Kurse, Workshops<br/><em>&amp; Seminare</em></h2>
+      <p class="section-text reveal">
+        Alle Angebote richten sich an Menschen, die ihre Gesundheit aktiv gestalten
+        und das Wissen der traditionellen Heilkunde in ihren Alltag integrieren möchten.
+      </p>
+      <div class="kurs-grid">
+
+        <div class="kurs-card kurs-card--featured reveal">
+          <svg class="kurs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            <path d="M12 12v3"/>
+            <path d="M9.5 14.5l2.5 1 2.5-1"/>
+          </svg>
+          <div class="kurs-card--featured-body">
+            <span class="kurs-card-tag">Methode nach Dr. Klinghardt</span>
+            <h3 class="kurs-card-name">ART, PK und MFT</h3>
+            <p class="kurs-card-desc">Autonome Regulationstherapie (ART), Psycho-Kinesiologie (PK) und Mentalfeld-Therapie (MFT) — ganzheitliche Methoden zur Regulation von Körper, Geist und Seele nach Dr. Dietrich Klinghardt.</p>
+          </div>
+        </div>
+
+        <div class="kurs-card reveal">
+          <svg class="kurs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+          <span class="kurs-card-tag">Seminar</span>
+          <h3 class="kurs-card-name">Salutogenese — Einführung &amp; Vertiefung</h3>
+          <p class="kurs-card-desc">Was hält uns gesund? Theorie und Praxis des salutogenetischen Denkens — für Einzelpersonen und Gruppen.</p>
+        </div>
+
+        <div class="kurs-card reveal">
+          <svg class="kurs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22C6.5 22 2 17.5 2 12c0-2.5 1-5 2.5-6.5"/>
+            <path d="M12 2c2.8 0 5.3 1.2 7 3l-7 7-3-5.5"/>
+            <path d="M19.5 5.5C21 7 22 9.5 22 12"/>
+          </svg>
+          <span class="kurs-card-tag">Workshop</span>
+          <h3 class="kurs-card-name">Traditionelle Europäische Medizin (TEM)</h3>
+          <p class="kurs-card-desc">Altes Heilwissen neu entdecken — Kräuter, Rhythmus und Naturheilkunde im 21. Jahrhundert.</p>
+        </div>
+
+        <div class="kurs-card reveal">
+          <svg class="kurs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s-8-5-8-12a8 8 0 0 1 16 0c0 7-8 12-8 12z"/>
+            <circle cx="12" cy="10" r="2"/>
+          </svg>
+          <span class="kurs-card-tag">Vortrag &amp; Workshop</span>
+          <h3 class="kurs-card-name">Aus Freyas Zaubergarten</h3>
+          <p class="kurs-card-desc">Heilpflanzen und ihre mythologischen Wurzeln — ein Streifzug durch germanische Kräuterkunde und Symbolik.</p>
+        </div>
+
+        <div class="kurs-card reveal">
+          <svg class="kurs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <span class="kurs-card-tag">Gruppenarbeit</span>
+          <h3 class="kurs-card-name">Sozialtherapeutisches Rollenspiel</h3>
+          <p class="kurs-card-desc">Märchen, Symbole und Mythen als therapeutisches Werkzeug — heilsame Begegnung in der Gruppe.</p>
+        </div>
+
+        <div class="kurs-card reveal">
+          <svg class="kurs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          <span class="kurs-card-tag">Workshop</span>
+          <h3 class="kurs-card-name">Hildegard-Heilkunde &amp; Kneipp-Methode</h3>
+          <p class="kurs-card-desc">Zwei Säulen der traditionellen Naturheilkunde — praktisch und alltagsnah vermittelt.</p>
+        </div>
+
+        <div class="kurs-card reveal">
+          <svg class="kurs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+            <line x1="6" y1="1" x2="6" y2="4"/>
+            <line x1="10" y1="1" x2="10" y2="4"/>
+            <line x1="14" y1="1" x2="14" y2="4"/>
+          </svg>
+          <span class="kurs-card-tag">Kurs</span>
+          <h3 class="kurs-card-name">Entspannung &amp; Stressbewältigung</h3>
+          <p class="kurs-card-desc">Praktische Techniken zur Stärkung der inneren Ressourcen — für mehr Ruhe und Ausgeglichenheit im Alltag.</p>
+        </div>
+
+      </div>
+      <a href="#kontakt" class="btn reveal">Unverbindlich anfragen</a>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt" style="position:relative; overflow:hidden;">
+    <span class="watermark" aria-hidden="true">Wesenufer</span>
+    <div class="section-inner" style="position:relative; z-index:1;">
+      <div class="kontakt-grid">
+        <div>
+          <span class="section-label reveal">Kontakt</span>
+          <h2 class="section-title reveal">Ich freue mich<br/><em>von Ihnen zu hören</em></h2>
+          <p class="section-text reveal">
+            Alle Angebote sind unverbindlich anfragbar. Schreiben Sie mir einfach
+            eine E-Mail oder rufen Sie an — ich antworte persönlich.
+          </p>
+        </div>
+        <div>
+          <div class="kontakt-details">
+            <div class="kontakt-item reveal">
+              <span class="kontakt-label">Telefon</span>
+              <span class="kontakt-value">
+                <a href="tel:+43664257791">0043 6644 2577 91</a>
+              </span>
+            </div>
+            <div class="kontakt-item reveal">
+              <span class="kontakt-label">E-Mail</span>
+              <span class="kontakt-value">
+                <a href="mailto:birgit@wurmlinger.at">birgit@wurmlinger.at</a>
+              </span>
+            </div>
+            <div class="kontakt-item reveal">
+              <span class="kontakt-label">Ort</span>
+              <span class="kontakt-value">Wesenufer · zwischen Passau und Linz</span>
+            </div>
+          </div>
+          <div class="kontakt-verein reveal">
+            <h4>Verein GsundSamma</h4>
+            <p>menschlich · natürlich · lebensfroh<br/>
+            ZVR-Nummer: 152866 1046</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Birgit Wurmlinger — Wesenufer 100, A-4085 Waldkirchen am Wesen</p>
+    <a href="impressum.html">Impressum</a>
+  </footer>
+
+  <script>
+    // Nav scroll behaviour + progress bar + hero name float
+    const nav = document.getElementById('nav');
+    const progress = document.getElementById('progress');
+    const heroEl = document.getElementById('hero');
+    window.addEventListener('scroll', () => {
+      const sy = window.scrollY;
+      nav.classList.toggle('scrolled', sy > 60);
+      const pct = sy / (document.documentElement.scrollHeight - window.innerHeight);
+      progress.style.width = (pct * 100) + '%';
+      // Show name in nav when hero is 72% scrolled away
+      nav.classList.toggle('name-visible', sy > heroEl.offsetHeight * 0.72);
+    }, { passive: true });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    function closeMobile() {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    // Close on Escape
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobile(); });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
