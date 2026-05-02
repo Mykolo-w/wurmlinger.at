@@ -800,6 +800,27 @@
       z-index: -1;
     }
 
+    /* ── SIGNATURE ──────────────────────────────── */
+    .signature-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 2.2rem;
+    }
+    .signature-rule {
+      width: 32px;
+      height: 1px;
+      background: var(--earth);
+      opacity: 0.45;
+      margin-bottom: 0.7rem;
+    }
+    .signature-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.4rem;
+      color: var(--earth);
+      line-height: 1.2;
+    }
+
     /* ── RESPONSIVE ──────────────────────────────── */
     @media (max-width: 900px) {
       nav { padding: 1.2rem 2rem; }
@@ -893,6 +914,10 @@
           <span class="credential-item">Gruppentherapeutin — Sozialtherapeutisches Rollenspiel</span>
           <span class="credential-item">Märchen, Symbole und Mythen</span>
           <span class="credential-item">Salutogenese-Beratung</span>
+        </div>
+        <div class="signature-wrap reveal">
+          <div class="signature-rule"></div>
+          <span class="signature-name">Birgit Wurmlinger</span>
         </div>
       </div>
     </div>
@@ -1084,6 +1109,10 @@
             Alle Angebote sind unverbindlich anfragbar. Schreiben Sie mir einfach
             eine E-Mail oder rufen Sie an — ich antworte persönlich.
           </p>
+          <div class="signature-wrap reveal">
+            <div class="signature-rule"></div>
+            <span class="signature-name">Birgit Wurmlinger</span>
+          </div>
         </div>
         <div>
           <div class="kontakt-details">
