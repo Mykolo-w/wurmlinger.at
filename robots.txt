@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /bilder/original/
+
+Sitemap: https://www.gsundsamma.at/sitemap.xml

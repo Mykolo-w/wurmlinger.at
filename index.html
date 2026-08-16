@@ -3,10 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Birgit Wurmlinger — Gesundheit aus der Natur</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+  <title>Birgit Wurmlinger — Gesundheit aus der Natur | Wesenufer</title>
+  <meta name="description" content="Kurse und Workshops zur natürlichen Heilkunde in Wesenufer zwischen Passau und Linz. Salutogenese, Kräuterwissen und Traditionen von Hildegard von Bingen bis Sebastian Kneipp — Verein GsundSamma." />
+  <link rel="canonical" href="https://www.gsundsamma.at/" />
+  <meta name="theme-color" content="#F7F4F0" />
+
+  <!-- Social-Vorschau (WhatsApp, Facebook, Signal) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_AT" />
+  <meta property="og:site_name" content="GsundSamma — Birgit Wurmlinger" />
+  <meta property="og:title" content="Birgit Wurmlinger — Gesundheit aus der Natur" />
+  <meta property="og:description" content="Kurse und Workshops zur natürlichen Heilkunde in Wesenufer zwischen Passau und Linz." />
+  <meta property="og:url" content="https://www.gsundsamma.at/" />
+  <meta property="og:image" content="https://www.gsundsamma.at/og-bild.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Naturaufnahme — Gesundheit aus der Natur" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- Schriften selbst gehostet — keine Verbindung zu Google -->
+  <link rel="preload" href="fonts/raleway-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/lora-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/great-vibes-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="fonts/fonts.css" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -150,7 +173,7 @@
     /* ── HERO ────────────────────────────────────── */
     #hero {
       height: 100vh;
-      background-image: url('bilder/bild_01_hintergrund_a.jpg');
+      background-image: url('bilder/bild_01_hintergrund_a.webp');
       background-size: cover;
       background-position: 68% center;
       display: flex;
@@ -375,7 +398,7 @@
     .parallax-break {
       height: 62vh;
       min-height: 400px;
-      background-image: url('bilder/bild_09_bienenapotheke.jpg');
+      background-image: url('bilder/bild_09_bienenapotheke.webp');
       background-position: center;
       position: relative;
     }
@@ -459,7 +482,7 @@
 
     /* ── PARALLAX BREAK 2 ────────────────────────── */
     .parallax-break-2 {
-      background-image: url('bilder/bild_07_natur_b.jpg');
+      background-image: url('bilder/bild_07_natur_b.webp');
       background-position: center 40%;
     }
 
@@ -897,7 +920,7 @@
   <section id="ueber-mich">
     <div class="ueber-grid">
       <div class="ueber-img-wrap">
-        <img src="bilder/bild_08_portrait.jpg" alt="Birgit Wurmlinger" loading="lazy" />
+        <img src="bilder/bild_08_portrait.webp" alt="Birgit Wurmlinger" width="1600" height="1067" loading="lazy" decoding="async" />
       </div>
       <div class="ueber-text">
         <span class="section-label reveal">Über mich</span>
@@ -961,7 +984,7 @@
       <h2 class="section-title reveal">Traditionen, die<br/><em>bis heute wirken</em></h2>
       <div class="tradition-grid">
         <div class="tradition-card reveal" data-year="1098">
-          <img src="bilder/bild_04_hildegard_von_bingen.jpg" alt="Hildegard von Bingen" loading="lazy" />
+          <img src="bilder/bild_04_hildegard_von_bingen.webp" alt="Hildegard von Bingen" width="620" height="417" loading="lazy" decoding="async" />
           <span class="tradition-years">1098 – 1179</span>
           <h3>Hl. Hildegard von Bingen</h3>
           <p>Benediktinerin, Ärztin und Mystikerin — ihr ganzheitliches Heilwissen
@@ -969,7 +992,7 @@
           wissenschaftlich anerkannt.</p>
         </div>
         <div class="tradition-card reveal" data-year="1821">
-          <img src="bilder/bild_05_sebastian_kneipp.jpg" alt="Sebastian Kneipp" loading="lazy" style="object-position: top;" />
+          <img src="bilder/bild_05_sebastian_kneipp.webp" alt="Sebastian Kneipp" width="900" height="1557" loading="lazy" decoding="async" style="object-position: top;" />
           <span class="tradition-years">1821 – 1897</span>
           <h3>Sebastian Kneipp</h3>
           <p>Pfarrer und Naturheilkundler aus dem Allgäu. Seine fünf Säulen —
@@ -977,7 +1000,7 @@
           die Grundlage einer zeitlosen Gesundheitslehre.</p>
         </div>
         <div class="tradition-card reveal" data-year="1812">
-          <img src="bilder/bild_06_gebrueder_grimm.png" alt="Gebrüder Grimm" loading="lazy" />
+          <img src="bilder/bild_06_gebrueder_grimm.webp" alt="Gebrüder Grimm" width="640" height="673" loading="lazy" decoding="async" />
           <span class="tradition-years">Herausgabe 1812 – 1858</span>
           <h3>KHM der Brüder Grimm</h3>
           <p>Märchen sind mehr als Geschichten für Kinder. In Symbolen, Mythen
@@ -1148,7 +1171,7 @@
   <!-- FOOTER -->
   <footer>
     <p>© 2026 Birgit Wurmlinger — Wesenufer 100, A-4085 Waldkirchen am Wesen</p>
-    <a href="impressum.html">Impressum</a>
+    <a href="/impressum">Impressum</a>
   </footer>
 
   <script>
